@@ -1,4 +1,4 @@
-package com.github.rexfilius.movieviewer.data
+package com.github.rexfilius.movieviewer.data.repositories
 
 import com.github.rexfilius.movieviewer.data.models.MovieDetail
 import com.github.rexfilius.movieviewer.data.models.Result
