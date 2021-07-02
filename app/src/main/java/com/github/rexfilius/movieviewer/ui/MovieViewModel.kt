@@ -20,8 +20,9 @@ class MovieViewModel : ViewModel() {
 
     fun getMovieDetail(movieId: Int) = liveData(Dispatchers.IO) {
         val response = repository.getMovieDetail(movieId)
-        Log.d(tag, "getMovieDetail: ${movieId == 19404}")
+        Log.d(tag, "getMovieDetail: $movieId")
         emit(response)
     }
+    // 19404
 
 }
