@@ -11,7 +11,7 @@ data class Result(
     val movieOverview: String,
 
     @SerializedName("poster_path")
-    val moviePoster: String?,
+    val moviePoster: String,
 
     @SerializedName("release_date")
     val movieReleaseDate: String,

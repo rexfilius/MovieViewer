@@ -2,9 +2,8 @@ package com.github.rexfilius.movieviewer.util
 
 object Constants {
 
-    const val BASE_URL_POPULAR = "https://api.themoviedb.org/3/discover/movie/"
-    const val ENGLISH_USA ="en-US"
-    const val PAGE = 1
+    const val BASE_URL = "https://api.themoviedb.org/3/"
     const val POPULAR = "popularity.desc"
+    const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/original"
 
 }

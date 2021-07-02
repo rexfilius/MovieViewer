@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.github.rexfilius.movieviewer.data.models.MoviesTopRated
 import com.github.rexfilius.movieviewer.data.models.Result
 import com.github.rexfilius.movieviewer.databinding.ItemMovieListBinding
+import com.github.rexfilius.movieviewer.util.Constants.BASE_URL_IMAGE
 
 class MovieListAdapter
     : ListAdapter<Result, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtil) {
@@ -30,7 +30,7 @@ class MovieListAdapter
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(result: Result) {
-            binding.movieListCardImage.load(result.moviePoster)
+            binding.movieListCardImage.load(BASE_URL_IMAGE + result.moviePoster)
             binding.movieListCardTitle.text = result.movieTitle
         }
 
