@@ -1,26 +1,27 @@
-package com.github.rexfilius.movieviewer.ui
+package com.github.rexfilius.movieviewer.ui.movieList
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.rexfilius.movieviewer.R
+import com.github.rexfilius.movieviewer.data.models.Result
 import com.github.rexfilius.movieviewer.databinding.FragmentMovieListBinding
 import com.github.rexfilius.movieviewer.util.ApiResult
 
 class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
     private var movieListBinding: FragmentMovieListBinding? = null
-    private lateinit var viewModel: MovieViewModel
+    private val viewModel: MovieListViewModel by viewModels()
     private lateinit var movieListAdapter: MovieListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(requireActivity()).get(MovieViewModel::class.java)
-        movieListAdapter = MovieListAdapter()
+        movieListAdapter = MovieListAdapter { movieListAdapterOnClick(it) }
 
         val binding = FragmentMovieListBinding.bind(view)
         movieListBinding = binding
@@ -54,6 +55,12 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
     override fun onDestroyView() {
         movieListBinding = null
         super.onDestroyView()
+    }
+
+    private fun movieListAdapterOnClick(result: Result) {
+        this.findNavController().navigate(
+            MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment()
+        )
     }
 
 }

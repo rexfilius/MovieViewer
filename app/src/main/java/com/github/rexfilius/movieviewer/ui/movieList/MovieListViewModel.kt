@@ -1,4 +1,4 @@
-package com.github.rexfilius.movieviewer.ui
+package com.github.rexfilius.movieviewer.ui.movieList
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -6,21 +6,15 @@ import androidx.lifecycle.liveData
 import com.github.rexfilius.movieviewer.data.repositories.MovieRepository
 import kotlinx.coroutines.Dispatchers
 
-class MovieViewModel : ViewModel() {
+class MovieListViewModel : ViewModel() {
 
     private val repository get() = MovieRepository
 
-    private val tag = MovieViewModel::class.java.simpleName
+    private val tag = MovieListViewModel::class.java.simpleName
 
     fun getTopRatedMovies() = liveData(Dispatchers.IO) {
         val response = repository.getTopRatedMovies()
         Log.d(tag, "getTopRatedMovies: $response")
-        emit(response)
-    }
-
-    fun getMovieDetail(movieId: Int) = liveData(Dispatchers.IO) {
-        val response = repository.getMovieDetail(movieId)
-        Log.d(tag, "getMovieDetail: $movieId")    // e.g. 19404
         emit(response)
     }
 
