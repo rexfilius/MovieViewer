@@ -2,7 +2,6 @@ package com.github.rexfilius.movieviewer.ui.movieList
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -11,6 +10,10 @@ import com.github.rexfilius.movieviewer.R
 import com.github.rexfilius.movieviewer.data.models.Result
 import com.github.rexfilius.movieviewer.databinding.FragmentMovieListBinding
 import com.github.rexfilius.movieviewer.util.ApiResult
+import com.github.rexfilius.movieviewer.util.Constants.FAILURE
+import com.github.rexfilius.movieviewer.util.Constants.LOADING
+import com.github.rexfilius.movieviewer.util.Constants.SUCCESS
+import com.github.rexfilius.movieviewer.util.toast
 
 class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
@@ -34,20 +37,15 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
         viewModel.getTopRatedMovies().observe(viewLifecycleOwner, { moviesTopRated ->
             when (moviesTopRated) {
-                ApiResult.Loading -> {
-                    Toast.makeText(context, "Loading data", Toast.LENGTH_LONG).show()
-                }
+                ApiResult.Loading -> LOADING.toast(requireContext())
+                is ApiResult.Failure -> FAILURE.toast(requireContext())
 
                 is ApiResult.Success -> {
+                    SUCCESS.toast(requireContext())
                     movieListAdapter.submitList(moviesTopRated.data.results)
                     movieListAdapter.notifyDataSetChanged()
                 }
-
-                is ApiResult.Failure -> {
-                    Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_LONG).show()
-                }
             }
-
         })
 
     }
@@ -59,7 +57,9 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
     private fun movieListAdapterOnClick(result: Result) {
         this.findNavController().navigate(
-            MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment()
+            MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(
+                result.movieId
+            )
         )
     }
 
