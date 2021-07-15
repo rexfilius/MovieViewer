@@ -11,6 +11,7 @@ import com.github.rexfilius.movieviewer.R
 import com.github.rexfilius.movieviewer.data.models.Result
 import com.github.rexfilius.movieviewer.databinding.FragmentMovieListBinding
 import com.github.rexfilius.movieviewer.util.ApiResult
+import com.github.rexfilius.movieviewer.util.ApiResult.*
 
 class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
@@ -34,16 +35,16 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
         viewModel.getTopRatedMovies().observe(viewLifecycleOwner, { moviesTopRated ->
             when (moviesTopRated) {
-                ApiResult.Loading -> {
+                Loading -> {
                     Toast.makeText(context, "Loading data", Toast.LENGTH_LONG).show()
                 }
 
-                is ApiResult.Success -> {
+                is Success -> {
                     movieListAdapter.submitList(moviesTopRated.data.results)
                     movieListAdapter.notifyDataSetChanged()
                 }
 
-                is ApiResult.Failure -> {
+                is Failure -> {
                     Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_LONG).show()
                 }
             }
