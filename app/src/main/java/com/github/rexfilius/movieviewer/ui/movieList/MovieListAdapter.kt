@@ -33,8 +33,7 @@ class MovieListAdapter(private val onClick: (Result) -> Unit) :
             binding.movieListCardImage.load(BASE_URL_IMAGE + result.moviePoster)
             binding.movieListCardTitle.text = result.movieTitle
 
-            binding.movieListCardImage.setOnClickListener { onClick(result) }
-            binding.movieListCardTitle.setOnClickListener { onClick(result) }
+            binding.root.setOnClickListener { onClick(result) }
         }
 
     }
