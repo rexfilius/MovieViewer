@@ -12,6 +12,10 @@ import com.github.rexfilius.movieviewer.data.models.Result
 import com.github.rexfilius.movieviewer.databinding.FragmentMovieListBinding
 import com.github.rexfilius.movieviewer.util.ApiResult
 import com.github.rexfilius.movieviewer.util.ApiResult.*
+import com.github.rexfilius.movieviewer.util.Constants.FAILURE
+import com.github.rexfilius.movieviewer.util.Constants.LOADING
+import com.github.rexfilius.movieviewer.util.Constants.SUCCESS
+import com.github.rexfilius.movieviewer.util.toast
 
 class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
@@ -22,7 +26,7 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        movieListAdapter = MovieListAdapter { movieListAdapterOnClick(it) }
+        movieListAdapter = MovieListAdapter(requireContext()) { movieListAdapterOnClick(it) }
 
         val binding = FragmentMovieListBinding.bind(view)
         movieListBinding = binding
@@ -35,20 +39,15 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
         viewModel.getTopRatedMovies().observe(viewLifecycleOwner, { moviesTopRated ->
             when (moviesTopRated) {
-                Loading -> {
-                    Toast.makeText(context, "Loading data", Toast.LENGTH_LONG).show()
-                }
+                Loading -> LOADING.toast(requireContext())
+                is Failure -> FAILURE.toast(requireContext())
 
                 is Success -> {
+                    SUCCESS.toast(requireContext())
                     movieListAdapter.submitList(moviesTopRated.data.results)
                     movieListAdapter.notifyDataSetChanged()
                 }
-
-                is Failure -> {
-                    Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_LONG).show()
-                }
             }
-
         })
 
     }
@@ -60,7 +59,9 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
     private fun movieListAdapterOnClick(result: Result) {
         this.findNavController().navigate(
-            MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment()
+            MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(
+                result.movieId
+            )
         )
     }
 

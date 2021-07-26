@@ -18,4 +18,6 @@ data class Result(
 
     @SerializedName("title")
     val movieTitle: String,
+
+    var isFavorite: Boolean = false
 )
