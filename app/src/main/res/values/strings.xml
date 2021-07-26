@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">MovieViewer</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="all">All</string>
     <string name="favourites">Favourites</string>
     <string name="movie_poster">Movie poster</string>
@@ -10,4 +8,11 @@
     <string name="release_date">Release Date</string>
     <string name="movie_overview">Movie Overview</string>
     <string name="no_favourites_added">No favourites added.</string>
+
+    <string name="movieListTitle">Movies</string>
+    <string name="movieDetailTitle">Movie Detail</string>
+    <string name="movieFavoriteTitle">Your Favorite Movies</string>
+
+    <string name="nav_menu_home">All</string>
+    <string name="nav_menu_favorites">Favorites</string>
 </resources>

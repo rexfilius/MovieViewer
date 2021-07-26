@@ -7,58 +7,61 @@
     android:padding="16dp"
     tools:context=".ui.movieDetail.MovieDetailFragment">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/movieDetailTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/movie_title"
-        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/movieDetailTitleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movieDetailTitle" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/movieDetailReleaseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/release_date"
-        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movieDetailTitleText" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/movieDetailReleaseDateText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movieDetailReleaseDate" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/movieDetailOverview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/movie_overview"
-        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movieDetailReleaseDateText" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/movieDetailOverviewText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movieDetailOverview" />

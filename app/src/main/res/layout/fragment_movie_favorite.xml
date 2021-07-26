@@ -5,18 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".ui.movieList.MovieListFragment">
+    tools:context=".ui.movieFavorite.MovieFavoriteFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movieListRecyclerView"
+    <TextView
+        android:id="@+id/movieFavoriteNoFavText"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:paddingTop="16dp"
+        android:layout_height="wrap_content"
+        android:text="@string/no_favourites_added"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_movie_list" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
