@@ -1,9 +1,13 @@
 package com.github.rexfilius.movieviewer.data.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "movies")
 data class Result(
 
+    @PrimaryKey
     @SerializedName("id")
     val movieId: Int,
 
