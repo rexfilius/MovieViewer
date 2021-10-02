@@ -1,4 +1,4 @@
-package com.github.rexfilius.movieviewer.data.models
+package com.github.rexfilius.movieviewer.models
 
 data class MoviesTopRated(
     val page: Int,

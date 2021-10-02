@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.github.rexfilius.movieviewer.R
 import com.github.rexfilius.movieviewer.databinding.FragmentMovieDetailBinding
-import com.github.rexfilius.movieviewer.util.ApiResult
-import com.github.rexfilius.movieviewer.util.ApiResult.*
-import com.github.rexfilius.movieviewer.util.Constants
+import com.github.rexfilius.movieviewer.util.Resource.*
 import com.github.rexfilius.movieviewer.util.Constants.FAILURE
 import com.github.rexfilius.movieviewer.util.Constants.LOADING
 import com.github.rexfilius.movieviewer.util.Constants.SUCCESS

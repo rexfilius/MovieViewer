@@ -1,8 +1,8 @@
-package com.github.rexfilius.movieviewer.data.local
+package com.github.rexfilius.movieviewer.data.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.github.rexfilius.movieviewer.data.models.Result
+import com.github.rexfilius.movieviewer.models.Result
 
 @Dao
 interface MovieDao {

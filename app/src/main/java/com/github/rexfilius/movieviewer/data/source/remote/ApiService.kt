@@ -1,8 +1,8 @@
-package com.github.rexfilius.movieviewer.data.remote
+package com.github.rexfilius.movieviewer.data.source.remote
 
 import com.github.rexfilius.movieviewer.BuildConfig.API_KEY
-import com.github.rexfilius.movieviewer.data.models.MovieDetail
-import com.github.rexfilius.movieviewer.data.models.MoviesTopRated
+import com.github.rexfilius.movieviewer.models.MovieDetail
+import com.github.rexfilius.movieviewer.models.MoviesTopRated
 import com.github.rexfilius.movieviewer.util.Constants.BASE_URL
 import com.github.rexfilius.movieviewer.util.Constants.POPULAR
 import retrofit2.Retrofit

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.github.rexfilius.movieviewer.R
-import com.github.rexfilius.movieviewer.data.models.Result
+import com.github.rexfilius.movieviewer.models.Result
 import com.github.rexfilius.movieviewer.databinding.ItemMovieListBinding
 import com.github.rexfilius.movieviewer.util.Constants.BASE_URL_IMAGE
 

@@ -2,16 +2,14 @@ package com.github.rexfilius.movieviewer.ui.movieList
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.rexfilius.movieviewer.R
-import com.github.rexfilius.movieviewer.data.models.Result
+import com.github.rexfilius.movieviewer.models.Result
 import com.github.rexfilius.movieviewer.databinding.FragmentMovieListBinding
-import com.github.rexfilius.movieviewer.util.ApiResult
-import com.github.rexfilius.movieviewer.util.ApiResult.*
+import com.github.rexfilius.movieviewer.util.Resource.*
 import com.github.rexfilius.movieviewer.util.Constants.FAILURE
 import com.github.rexfilius.movieviewer.util.Constants.LOADING
 import com.github.rexfilius.movieviewer.util.Constants.SUCCESS
