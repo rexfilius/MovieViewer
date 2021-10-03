@@ -5,7 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.github.rexfilius.movieviewer.R
 import com.github.rexfilius.movieviewer.databinding.FragmentMovieFavoriteBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieFavoriteFragment : Fragment(R.layout.fragment_movie_favorite) {
 
     private var movieFavoriteBinding: FragmentMovieFavoriteBinding? = null

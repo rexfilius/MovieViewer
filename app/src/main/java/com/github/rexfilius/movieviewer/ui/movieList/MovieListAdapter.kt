@@ -39,7 +39,6 @@ class MovieListAdapter(val context: Context, private val onClick: (Result) -> Un
             context.resources, R.drawable.ic_favorite_border, null
         )
 
-
         fun bind(result: Result, onClick: (Result) -> Unit) {
             binding.movieListCardImage.load(BASE_URL_IMAGE + result.moviePoster)
             binding.movieListCardTitle.text = result.movieTitle

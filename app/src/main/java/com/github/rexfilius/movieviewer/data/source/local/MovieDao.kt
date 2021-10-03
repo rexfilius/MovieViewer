@@ -10,9 +10,6 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovie(result: Result)
 
-    @Update
-    suspend fun updateMovie(result: Result)
-
     @Delete
     suspend fun deleteMovie(result: Result)
 
@@ -20,6 +17,6 @@ interface MovieDao {
     fun getAllMovies(): LiveData<List<Result>>
 
     @Query("SELECT * FROM movies WHERE movieId = :id")
-    suspend fun findMovieById(id: Int): Result
+    fun findMovieById(id: Int): LiveData<Result>
 
 }

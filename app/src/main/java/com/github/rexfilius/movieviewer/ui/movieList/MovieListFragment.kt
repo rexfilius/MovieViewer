@@ -14,7 +14,9 @@ import com.github.rexfilius.movieviewer.util.Constants.FAILURE
 import com.github.rexfilius.movieviewer.util.Constants.LOADING
 import com.github.rexfilius.movieviewer.util.Constants.SUCCESS
 import com.github.rexfilius.movieviewer.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
     private var movieListBinding: FragmentMovieListBinding? = null
@@ -38,12 +40,12 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
         viewModel.getTopRatedMovies().observe(viewLifecycleOwner, { moviesTopRated ->
             when (moviesTopRated) {
                 Loading -> LOADING.toast(requireContext())
+
                 is Failure -> FAILURE.toast(requireContext())
 
                 is Success -> {
                     SUCCESS.toast(requireContext())
                     movieListAdapter.submitList(moviesTopRated.data.results)
-                    movieListAdapter.notifyDataSetChanged()
                 }
             }
         })

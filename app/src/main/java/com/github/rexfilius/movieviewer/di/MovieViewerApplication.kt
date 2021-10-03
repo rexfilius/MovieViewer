@@ -1,4 +1,8 @@
 package com.github.rexfilius.movieviewer.di
 
-class MovieViewerApplication {
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class MovieViewerApplication: Application() {
 }

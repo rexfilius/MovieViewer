@@ -9,11 +9,11 @@ import com.github.rexfilius.movieviewer.util.Resource
 // it has no business with the MovieRepository
 class FakeRepository : Repository {
 
-    override suspend fun getTopRatedMovies(): Resource<MoviesTopRated> {
+    override suspend fun getTopRatedMoviesFromApi(): Resource<MoviesTopRated> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getMovieDetail(movieId: Int): Resource<MovieDetail> {
+    override suspend fun getMovieDetailFromApi(movieId: Int): Resource<MovieDetail> {
         TODO("Not yet implemented")
     }
 

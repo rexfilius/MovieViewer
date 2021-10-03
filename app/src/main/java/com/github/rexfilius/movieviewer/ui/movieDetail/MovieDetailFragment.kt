@@ -12,7 +12,9 @@ import com.github.rexfilius.movieviewer.util.Constants.FAILURE
 import com.github.rexfilius.movieviewer.util.Constants.LOADING
 import com.github.rexfilius.movieviewer.util.Constants.SUCCESS
 import com.github.rexfilius.movieviewer.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
     private var movieDetailBinding: FragmentMovieDetailBinding? = null
@@ -28,7 +30,9 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         viewModel.getMovieDetail(args.movieID).observe(viewLifecycleOwner, { movieDetail ->
             when (movieDetail) {
                 Loading -> LOADING.toast(requireContext())
+
                 is Failure -> FAILURE.toast(requireContext())
+
                 is Success -> {
                     SUCCESS.toast(requireContext())
                     binding.movieDetailTitleText.text = movieDetail.data.movieTitle
