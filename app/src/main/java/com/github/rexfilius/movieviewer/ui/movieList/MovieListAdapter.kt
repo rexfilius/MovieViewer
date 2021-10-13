@@ -13,10 +13,15 @@ import com.github.rexfilius.movieviewer.models.Result
 import com.github.rexfilius.movieviewer.databinding.ItemMovieListBinding
 import com.github.rexfilius.movieviewer.util.Constants.BASE_URL_IMAGE
 
-class MovieListAdapter(val context: Context, private val onClick: (Result) -> Unit) :
-    ListAdapter<Result, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtil) {
+class MovieListAdapter(
+    val context: Context,
+    private val onClick: (Result) -> Unit
+) : ListAdapter<Result, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtil) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MovieListViewHolder {
         return MovieListViewHolder(
             ItemMovieListBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
@@ -47,8 +52,20 @@ class MovieListAdapter(val context: Context, private val onClick: (Result) -> Un
             binding.movieListCardTitle.setOnClickListener { onClick(result) }
 
             binding.movieListCardFavIcon.setOnClickListener {
-                binding.movieListCardFavIcon.setImageDrawable(favIconFill)
+                addMovieToFavorite(result)
             }
+        }
+
+        fun addMovieToFavorite(movie: Result) {
+            movie.isFavorite = !(movie.isFavorite)
+            if (movie.isFavorite) {
+                binding.movieListCardFavIcon.setImageDrawable(favIconFill)
+                // insert movie to database
+            } else {
+                binding.movieListCardFavIcon.setImageDrawable(favIconBorder)
+                // remove movie from database
+            }
+
         }
 
     }
