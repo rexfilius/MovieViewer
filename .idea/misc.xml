@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MovieViewer/app/src/main/res/drawable-v24/ic_favorite_fill.xml" value="0.225" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MovieViewer/app/src/main/res/drawable/ic_favorite_border.xml" value="0.225" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MovieViewer/app/src/main/res/layout/fragment_movie_favorite.xml" value="0.23645833333333333" />
       </map>
     </option>

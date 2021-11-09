@@ -1,4 +1,4 @@
-package com.github.rexfilius.movieviewer.ui.movieList
+package com.github.rexfilius.movieviewer.ui
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,11 +12,12 @@ import com.github.rexfilius.movieviewer.R
 import com.github.rexfilius.movieviewer.models.Result
 import com.github.rexfilius.movieviewer.databinding.ItemMovieListBinding
 import com.github.rexfilius.movieviewer.util.Constants.BASE_URL_IMAGE
+import com.github.rexfilius.movieviewer.util.toast
 
-class MovieListAdapter(
+class MovieAdapter(
     val context: Context,
     private val onClick: (Result) -> Unit
-) : ListAdapter<Result, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtil) {
+) : ListAdapter<Result, MovieAdapter.MovieListViewHolder>(MovieListDiffUtil) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -56,16 +57,15 @@ class MovieListAdapter(
             }
         }
 
-        fun addMovieToFavorite(movie: Result) {
+        private fun addMovieToFavorite(movie: Result) {
             movie.isFavorite = !(movie.isFavorite)
             if (movie.isFavorite) {
                 binding.movieListCardFavIcon.setImageDrawable(favIconFill)
-                // insert movie to database
+                "Added to favorites".toast(context)
             } else {
                 binding.movieListCardFavIcon.setImageDrawable(favIconBorder)
-                // remove movie from database
+                "Removed from favorites".toast(context)
             }
-
         }
 
     }

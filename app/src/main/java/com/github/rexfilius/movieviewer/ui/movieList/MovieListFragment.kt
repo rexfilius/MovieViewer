@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.rexfilius.movieviewer.R
 import com.github.rexfilius.movieviewer.models.Result
 import com.github.rexfilius.movieviewer.databinding.FragmentMovieListBinding
+import com.github.rexfilius.movieviewer.ui.MovieAdapter
 import com.github.rexfilius.movieviewer.util.Resource.*
 import com.github.rexfilius.movieviewer.util.Constants.FAILURE
 import com.github.rexfilius.movieviewer.util.Constants.LOADING
@@ -21,19 +22,22 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
     private var movieListBinding: FragmentMovieListBinding? = null
     private val viewModel: MovieListViewModel by viewModels()
-    private lateinit var movieListAdapter: MovieListAdapter
+    private lateinit var movieAdapter: MovieAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        movieListAdapter = MovieListAdapter(requireContext()) { movieListAdapterOnClick(it) }
+        movieAdapter = MovieAdapter(requireContext()) { result ->
+            navigateToMovieDetail(result)
+            insertOrDeleteMovie(result)
+        }
 
         val binding = FragmentMovieListBinding.bind(view)
         movieListBinding = binding
 
         binding.movieListRecyclerView.apply {
             layoutManager = LinearLayoutManager(view.context)
-            adapter = movieListAdapter
+            adapter = movieAdapter
             setHasFixedSize(true)
         }
 
@@ -45,7 +49,7 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
                 is Success -> {
                     SUCCESS.toast(requireContext())
-                    movieListAdapter.submitList(moviesTopRated.data.results)
+                    movieAdapter.submitList(moviesTopRated.data.results)
                 }
             }
         })
@@ -57,12 +61,25 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
         super.onDestroyView()
     }
 
-    private fun movieListAdapterOnClick(result: Result) {
+    private fun navigateToMovieDetail(result: Result) {
         this.findNavController().navigate(
             MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(
                 result.movieId
             )
         )
+    }
+
+    /**
+     * TODO: FIND THE BUG!
+     * The 'movie favorite fragment is not showing the recyclerview list of
+     * 'saved' movies
+     * */
+    private fun insertOrDeleteMovie(result: Result) {
+        if (result.isFavorite) {
+            viewModel.insertMovie(result)
+        } else {
+            viewModel.deleteMovie(result)
+        }
     }
 
 }
